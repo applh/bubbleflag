@@ -92,12 +92,16 @@ BB.td_index=function(i) {
 
 
 BB.act_td=function(e) {
-   var ht=$(this).find(".index").html();
+   e.preventDefault();
+   e.stopPropagation();
+
+   var ht=$(this).children(".index").html();
    alert("TD "+ht);
 };
 BB.act_index=function(e) {
    e.preventDefault();
    e.stopPropagation();
+
    var ht=$(this).html();
    alert("INDEX "+ht);
 };
