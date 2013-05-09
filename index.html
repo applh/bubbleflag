@@ -64,12 +64,20 @@ var BB={};
 
 BB.version="v0.1";
 BB.jinit=function(){
+
+
    //var t=$("body").width()+'x'+$("body").height();
    //var t=$(".page").width()+'x'+$(".page").height();
    $("td").each(BB.td_index);
    $(".footer").append('<div class="version">');
    $(".version").html(BB.version);
+
+   $("td").tap(BB.act_td);
+   $(".index").tap(BB.act_index);
 };
+
+$(BB.jinit);
+
 BB.td_curindex=0;
 
 BB.td_index=function(i) {
@@ -82,7 +90,18 @@ BB.td_index=function(i) {
    $(this).html(t2);
 };
 
-$(BB.jinit);
+
+BB.act_td=function(e) {
+   var ht=$(this).find(".index").html();
+   alert("TD "+ht);
+};
+BB.act_index=function(e) {
+   e.preventDefault();
+   e.stopPropagation();
+   var ht=$(this).html();
+   alert("INDEX "+ht);
+};
+
 
    </script>
 </head>
