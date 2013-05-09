@@ -7,6 +7,7 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no">
 
+
     <style type="text/css">
 html, body {
    width:100%;
@@ -37,8 +38,11 @@ table td {
 }
     </style>
 
+   <link rel="stylesheet" href="jquery-mobile-min.css">
+
+    <script src="jquery-min.js"></script>
+    <script src="jquery-mobile-min.js"></script>
     <script src="cordova.js"></script>
-    <script src="jquery-200-min.js"></script>
 
 
     <script>
@@ -56,9 +60,9 @@ $(BB.jinit);
     </script>
 </head>
 <body>
-<div class="page">
+<div class="page" data-role="page">
  <div class="header">
-HEADER
+BUBBLE FLAG
  </div>
  <div class="content">
 <table>
@@ -107,7 +111,7 @@ HEADER
 </table>
  </div>
  <div class="footer">
-FOOTER
+&copy;2013 Applh.com
  </div>
 </div>
 </body>
