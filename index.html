@@ -21,15 +21,35 @@ table {
 }
 table td {
    width:80px;
-   height:40px;
+   height:50px;
    border:2px #00ff00 solid;
    border-radius: 10px;
+   text-align:right;
+   text-shadow:none;
+   z-index:1;
 }
 .header {
    text-align:center;
 }
 .footer {
    text-align:center;
+   position:fixed;
+   bottom:5px;
+   width:100%;
+   z-index:0;
+}
+.content {
+   background-color:#eeeeee;
+}
+.index {
+   border:2px #00aa00 solid;
+   border-radius: 20px;
+   height:20px;
+   width:20px;
+   padding:5px 5px;
+   font-size:.8em;
+   float:right;
+   background-color:#e0e0e0;
 }
    </style>
 
@@ -55,8 +75,11 @@ BB.td_curindex=0;
 BB.td_index=function(i) {
    BB.td_curindex++;
    var t=BB.td_curindex;
-   if (t < 10) t="0"+t;
-   $(this).html(t);
+   var t2=t;
+   if (t < 10) t2="0"+t;
+   //if (t < 100) t2="&nbsp;"+t2;
+   t2='<div class="index">'+t2+'</div>'
+   $(this).html(t2);
 };
 
 $(BB.jinit);
@@ -68,6 +91,11 @@ $(BB.jinit);
  <div class="header">
 BUBBLE FLAG
  </div>
+
+ <div class="footer">
+<div>&copy;2013 Applh.com</div>
+ </div>
+
  <div class="content">
 <table>
  <tbody>
@@ -193,9 +221,6 @@ BUBBLE FLAG
   </tr>
  </tbody>
 </table>
- </div>
- <div class="footer">
-<div>&copy;2013 Applh.com</div>
  </div>
 </div>
 </body>
