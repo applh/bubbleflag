@@ -13,6 +13,12 @@ html, body {
    height:100%;
    margin:0;
    padding:0;
+   min-width:1280px;
+   min-height:720px;
+}
+.page {
+   min-width:1280px;
+   min-height:720px;
 }
     </style>
 
@@ -25,6 +31,9 @@ var BB={};
 
 BB.jinit=function(){
    var t=$("body").width()+'x'+$("body").height();
+   alert(t);
+
+   var t=$(".page").width()+'x'+$(".page").height();
    alert(t);
 };
 $(BB.jinit);
