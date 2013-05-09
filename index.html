@@ -21,7 +21,7 @@ table {
 }
 table td {
    width:80px;
-   height:80px;
+   height:40px;
    border:2px #00ff00 solid;
    border-radius: 10px;
 }
@@ -42,13 +42,23 @@ table td {
    <script>
 var BB={};
 
+BB.version="v0.1";
 BB.jinit=function(){
-   var t=$("body").width()+'x'+$("body").height();
-   alert(t);
-
-   var t=$(".page").width()+'x'+$(".page").height();
-   alert(t);
+   //var t=$("body").width()+'x'+$("body").height();
+   //var t=$(".page").width()+'x'+$(".page").height();
+   $("td").each(BB.td_index);
+   $(".footer").append('<div class="version">');
+   $(".version").html(BB.version);
 };
+BB.td_curindex=0;
+
+BB.td_index=function(i) {
+   BB.td_curindex++;
+   var t=BB.td_curindex;
+   if (t < 10) t="0"+t;
+   $(this).html(t);
+};
+
 $(BB.jinit);
 
    </script>
@@ -72,26 +82,8 @@ BUBBLE FLAG
    <td></td>
    <td></td>
    <td></td>
-   <td></td>
-   <td></td>
   </tr>
   <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
    <td></td>
    <td></td>
    <td></td>
@@ -114,26 +106,8 @@ BUBBLE FLAG
    <td></td>
    <td></td>
    <td></td>
-   <td></td>
-   <td></td>
   </tr>
   <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
    <td></td>
    <td></td>
    <td></td>
@@ -156,12 +130,56 @@ BUBBLE FLAG
    <td></td>
    <td></td>
    <td></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
    <td></td>
    <td></td>
   </tr>
   <tr>
    <td></td>
    <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+  </tr>
+  <tr>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td></td>
+  </tr>
+  <tr>
    <td></td>
    <td></td>
    <td></td>
@@ -177,7 +195,7 @@ BUBBLE FLAG
 </table>
  </div>
  <div class="footer">
-&copy;2013 Applh.com
+<div>&copy;2013 Applh.com</div>
  </div>
 </div>
 </body>
