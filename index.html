@@ -31,17 +31,30 @@ table td {
    z-index:1;
    margin:5px;
 }
+td.sel {
+   background-color:#ffff00;
+}
+
 .header {
+   position:fixed;
+   top:0px;
+   padding:8px;
+   background-color:#ffffff;
    text-align:center;
+   width:100%;
+   z-index:1;
 }
 .footer {
-   text-align:center;
    position:fixed;
-   bottom:5px;
+   bottom:0px;
+   padding:8px;
+   background-color:#ffffff;
+   text-align:center;
    width:100%;
    z-index:0;
 }
 .content {
+   padding:32px;
    background-color:#222222;
 }
 .index {
@@ -65,23 +78,54 @@ table td {
    <script>
 var BB={};
 
-BB.version="v0.1";
-BB.jinit=function(){
+BB.version="v0.2";
 
+BB.grid_cols=10;
+BB.grid_rows=10;
+
+BB.grid_cur=1;
+BB.grid_max=10;
+
+BB.td_curindex=0;
+
+BB.jinit=function(){
 
    //var t=$("body").width()+'x'+$("body").height();
    //var t=$(".page").width()+'x'+$(".page").height();
-   $("td").each(BB.td_index);
+
+   BB.grid_reset(BB.grid_cur, BB.grid_cur);
+
    $(".footer").append('<div class="version">');
    $(".version").html(BB.version);
 
-   $("td").tap(BB.act_td);
-   $(".index").tap(BB.act_index);
 };
 
 $(BB.jinit);
 
-BB.td_curindex=0;
+BB.grid_init=function() {
+   var c=0;
+   var r=0;
+   for (r=0; r<BB.grid_rows; r++) {
+      var currow=$("table.grid tbody").append("<tr>");
+      for (c=0; c<BB.grid_cols; c++) {
+         currow.append("<td>");
+      }
+    }
+};
+
+BB.grid_reset=function(c, r) {
+   BB.grid_cols=c;
+   BB.grid_rows=r;
+   $("table.grid tbody").empty();
+
+   BB.grid_init();
+
+   BB.td_curindex=0;
+   $("td").each(BB.td_index);
+   $("td").tap(BB.act_td);
+   $(".index").tap(BB.act_index);
+};
+
 
 BB.td_index=function(i) {
    BB.td_curindex++;
@@ -94,19 +138,27 @@ BB.td_index=function(i) {
 };
 
 
-BB.act_td=function(e) {
-   e.preventDefault();
-   e.stopPropagation();
+BB.act_td=function(evt) {
 
    var ht=$(this).children(".index").html();
-   alert("TD "+ht);
+   $(this).toggleClass("sel");
+
+   evt.preventDefault();
+   evt.stopPropagation();
 };
-BB.act_index=function(e) {
-   e.preventDefault();
-   e.stopPropagation();
+
+BB.act_index=function(evt) {
 
    var ht=$(this).html();
-   alert("INDEX "+ht);
+
+   var clickgrid=Math.round(Math.sqrt(ht));
+   if (clickgrid < BB.grid_max) { 
+      BB.grid_cur=1+clickgrid;
+      BB.grid_reset(BB.grid_cur, BB.grid_cur);
+   }
+
+   evt.preventDefault();
+   evt.stopPropagation();
 };
 
 
@@ -123,128 +175,8 @@ BUBBLE FLAG
  </div>
 
  <div class="content">
-<table>
+<table class="grid">
  <tbody>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
-  <tr>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-   <td></td>
-  </tr>
  </tbody>
 </table>
  </div>
