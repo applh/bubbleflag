@@ -17,6 +17,11 @@
 .content > * {
    margin:0 auto;
 }
+
+.gridbox table {
+   margin:0 auto;
+}
+
 table {
    padding:8px;
    border-spacing:4px;
@@ -43,6 +48,7 @@ td.sel {
    text-align:center;
    width:100%;
    z-index:1;
+   font-size:2em;
 }
 .footer {
    position:fixed;
@@ -52,9 +58,15 @@ td.sel {
    text-align:center;
    width:100%;
    z-index:0;
+   font-size:.8em;
 }
+.footer > * {
+   float:left;
+   margin-right:16px;
+}
+
 .content {
-   padding:32px;
+   padding:3em;
    background-color:#222222;
 }
 
@@ -124,7 +136,9 @@ BB.grid_init=function() {
 BB.grid_reset=function(c, r) {
    BB.grid_cols=c;
    BB.grid_rows=r;
-   $("tbody.gridbody").html("");
+
+   $("tbody.gridbody").html('');
+   $(".gridbox").html('<table class="grid"><tbody class="gridbody"></tbody></table>');
 
    BB.grid_init();
 
@@ -188,10 +202,9 @@ BB.act_menu=function(evt) {
  </div>
 
  <div class="content">
-<table class="grid">
- <tbody class="gridbody">
- </tbody>
-</table>
+  <div class="gridbox">
+<table class="grid"><tbody class="gridbody"></tbody></table>
+  </div>
  </div>
 </div>
 </body>
