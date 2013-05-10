@@ -106,9 +106,9 @@ BB.grid_init=function() {
    var c=0;
    var r=0;
    for (r=0; r<BB.grid_rows; r++) {
-      var currow=$("table.grid tbody").append("<tr>");
+      var currow=$("tbody.gridbody").append('<tr class="r'+r+'">');
       for (c=0; c<BB.grid_cols; c++) {
-         currow.append("<td>");
+         currow.append('<td class="c'+c+'">');
       }
     }
 };
@@ -116,7 +116,7 @@ BB.grid_init=function() {
 BB.grid_reset=function(c, r) {
    BB.grid_cols=c;
    BB.grid_rows=r;
-   $("table.grid tbody").empty();
+   $("table.grid tbody").html("");
 
    BB.grid_init();
 
@@ -176,7 +176,7 @@ BUBBLE FLAG
 
  <div class="content">
 <table class="grid">
- <tbody>
+ <tbody class="gridbody">
  </tbody>
 </table>
  </div>
